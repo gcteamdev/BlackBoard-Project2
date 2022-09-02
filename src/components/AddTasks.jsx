@@ -7,7 +7,7 @@ const AddTasks = () => {
 
 
     const [name, setName] = useState("");
-    const [date,setdue] = useState("");
+    const [date,setDue] = useState("");
     const [assign, setAssign] = useState("");
 
     const [tasks, setTasks] = useContext(TasksContext);
@@ -15,23 +15,30 @@ const AddTasks = () => {
     const updateTask = (e) =>{
         setName(e.target.value);
         
+        
     }
 
     const updateAssigned = (e) =>{
         setAssign(e.target.value);
+        
         
 
     }
     
 
     const updateduedate = (e) =>{
-        setdue(e.target.value);
+        setDue(e.target.value);
+        
         
     }
     
     const addNewTasks = (e) =>{
         e.preventDefault();
-        setTasks( (previousTasks) =>[...previousTasks, {name: name, date:date, assign: assign}])
+        setTasks( (previousTasks) =>[...previousTasks, {name: name, date:date, assign: assign}]);
+        setName("");
+        setAssign("");
+        setDue("");
+        
 
     }
 
@@ -50,7 +57,7 @@ const AddTasks = () => {
          <level> Task Assigned to</level> <br></br>
          <input className ="rounded col-12 "type="text" name="assign" placeholder='Assigned to...' value={assign} onChange={updateAssigned}/>
          <br></br>
-         <button className="save mt-2">Save</button>
+         <button type="submit" className="save mt-2">Save</button>
        </form>
     );
 };
